@@ -1,0 +1,36 @@
+<div class="padding-bottom-45">
+  <h3>
+    <span>添加集团列表</span>
+  </h3>
+
+  <form nz-form #validateForm="ngForm" (ngSubmit)="save()">
+    <!--企业名称-->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>集团名称</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input nz-input name="name" formControlName="集团名称" placeholder="请输入集团名称">
+      </nz-form-control>
+    </nz-form-item>
+    <!--描述-->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>集团名称</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input nz-input name="name" formControlName="集团名称" placeholder="请输入集团名称">
+      </nz-form-control>
+    </nz-form-item>
+    <!--备注-->
+    <!--<nz-form-item>-->
+      <!--<nz-form-control nzHasFeedback>-->
+        <!--<input nz-input name="name"-->
+               <!--#name="ngModel"-->
+               <!--[(ngModel)]="role.name"-->
+               <!--[placeholder]="l('Name')" required>-->
+        <!--<nz-form-explain *ngIf="name.control.dirty&&name.control.errors">-->
+          <!--<ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>-->
+        <!--</nz-form-explain>-->
+      <!--</nz-form-control>-->
+    <!--</nz-form-item>-->
+
+  </form>
+
+</div>

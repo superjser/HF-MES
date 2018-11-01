@@ -1,0 +1,41 @@
+<page-header [title]="enterpriseTitle"></page-header>
+
+
+<nz-card [nzExtra]="extraTpl">
+
+  <ng-template #extraTpl>
+    <button nz-button (click)="refresh()" nzShape="circle">
+      <i class="anticon anticon-reload"></i>
+    </button>
+    <button nz-button (click)="create()" nzShape="circle" nzType="primary">
+      <i class="anticon anticon-plus"></i>
+    </button>
+  </ng-template>
+
+
+  <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
+            [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()" [nzFrontPagination]="false">
+    <thead>
+    <tr>
+      <th>EnterpriseName</th>
+      <th>EnterpriseDescription</th>
+      <th>CreationTime</th>
+      <th>Actions</th>
+      <!--<th>{{l("Actions")}}</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let enterprise of enterprises">
+      <td>{{enterprise.EnterpriseName}}</td>
+      <td>{{enterprise.EnterpriseDescription}}</td>
+      <td>{{enterprise.CreationTime}}</td>
+      <td>
+        <a (click)="edit(item)">编辑</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="delete(item)">删除</a>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+
+</nz-card>
