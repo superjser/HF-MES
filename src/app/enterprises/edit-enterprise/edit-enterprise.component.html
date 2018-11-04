@@ -1,3 +1,51 @@
-<p>
-  edit-enterprise works!
-</p>
+<div>
+
+  <h3>
+    <span> 编辑 </span>
+  </h3>
+
+
+  <nz-spin>
+    <form nz-form (ngSubmit)="save()">
+      <!-- 名称 -->
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input name="name" placeholder="名称" required>
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- 展示名称 -->
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input name="displayName" placeholder="lala" required>
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- 介绍 -->
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input name="description"  placeholder="介绍">
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- 权限组 -->
+      <nz-form-item>
+        <nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>
+      </nz-form-item>
+
+      <!-- 功能按钮 -->
+      <div class="custom-modal-footer">
+        <div class="custom-modal-footter-group">
+          <button nz-button type="button" [disabled]="saving" (click)="close()">
+            取消
+          </button>
+          <!--<button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">-->
+          <button nz-button>
+            保存
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </nz-spin>
+</div>

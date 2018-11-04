@@ -27,6 +27,10 @@ import { EditGroupComponent } from './groups/edit-group/edit-group.component';
 import { EnterprisesComponent } from './enterprises/enterprises.component';
 import { CreateEnterpriseComponent } from './enterprises/create-enterprise/create-enterprise.component';
 import { EditEnterpriseComponent } from './enterprises/edit-enterprise/edit-enterprise.component';
+import { FactoriesComponent } from './factories/factories.component';
+import { CreateFactoryComponent } from './factories/create-factory/create-factory.component';
+import { EditFactoryComponent } from './factories/edit-factory/edit-factory.component';
+import { ProductionLinesComponent } from './production-lines/production-lines.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -59,6 +63,10 @@ import { EditEnterpriseComponent } from './enterprises/edit-enterprise/edit-ente
     EnterprisesComponent,
     CreateEnterpriseComponent,
     EditEnterpriseComponent,
+    FactoriesComponent,
+    CreateFactoryComponent,
+    EditFactoryComponent,
+    ProductionLinesComponent,
   ],
   entryComponents: [
     CreateTenantComponent,
@@ -70,7 +78,9 @@ import { EditEnterpriseComponent } from './enterprises/edit-enterprise/edit-ente
     CreateGroupComponent,
 
     CreateEnterpriseComponent,
-    EditEnterpriseComponent
+    EditEnterpriseComponent,
+    CreateFactoryComponent,
+    EditFactoryComponent
   ],
   providers: [
     LocalizationService,

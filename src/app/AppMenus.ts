@@ -46,7 +46,7 @@ export class AppMenus {
         [
         new MenuItem('集团', '', '', '/app/groups'),
         new MenuItem('企业', '', '', '/app/enterprises'),
-        new MenuItem('车间', '', '', 'xx'),
+        new MenuItem('车间', 'Page.Factories', '', '/app/factories'),
         new MenuItem('产线', '', '', 'xx'),
         new MenuItem('产品', '', '', 'xx'),
         new MenuItem('工艺路径', '', '', 'xx'),

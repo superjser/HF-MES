@@ -1,4 +1,4 @@
-<page-header [title]="enterpriseTitle"></page-header>
+<page-header [title]=""></page-header>
 
 
 <nz-card [nzExtra]="extraTpl">
@@ -17,20 +17,19 @@
             [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()" [nzFrontPagination]="false">
     <thead>
     <tr>
-      <th>EnterpriseName</th>
-      <th>EnterpriseDescription</th>
-      <th>CreationTime</th>
-      <th>Actions</th>
-      <!--<th>{{l("Actions")}}</th>-->
+      <th>{{l('enterpriseName')}}</th>
+      <th>{{l('enterpriseDescription')}}</th>
+      <th>{{l('creationTime')}}</th>
+      <th>{{l("Actions")}}</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let enterprise of enterprises">
-      <td>{{enterprise.EnterpriseName}}</td>
-      <td>{{enterprise.EnterpriseDescription}}</td>
-      <td>{{enterprise.CreationTime}}</td>
+    <tr *ngFor="let item of ajaxTable.data">
+      <td>{{item.enterpriseName}}</td>
+      <td>{{item.enterpriseDescription}}</td>
+      <td>{{item.creationTime}}</td>
       <td>
-        <a (click)="edit(item)">编辑</a>
+        <a (click)="edit()">编辑</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a (click)="delete(item)">删除</a>
       </td>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Injector, Input } from '@angular/core';
-// import { ListResultDtoOfPermissionDto, CreateRoleDto, RoleServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ListResultDtoOfPermissionDto, CreateEnterpriseDto, EnterpriseServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ModalComponentBase } from '@shared/component-base';
 import { Validators } from '@angular/forms';
@@ -24,18 +23,6 @@ export class CreateEnterpriseComponent extends ModalComponentBase implements OnI
 
   ngOnInit() {
 
-    // this._enterpriseService.getAllPermissions()
-    //   .subscribe((permissions: ListResultDtoOfPermissionDto) => {
-    //     this.permissions = permissions;
-    //
-    //     this.permissions.items.forEach((item) => {
-    //       this.permissionList.push({
-    //         label: item.displayName, value: item.name, checked: true
-    //       });
-    //     });
-    //
-    //   });
-
   }
 
   save(): void {
@@ -47,8 +34,6 @@ export class CreateEnterpriseComponent extends ModalComponentBase implements OnI
         tmpPermissions.push(item.value);
       }
     });
-
-    // this.enterprise.permissions = tmpPermissions;
 
     this._enterpriseService.create(this.enterprise)
       .finally(() => {

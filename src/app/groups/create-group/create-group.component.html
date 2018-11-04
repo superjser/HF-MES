@@ -1,36 +1,48 @@
 <div class="padding-bottom-45">
+
   <h3>
-    <span>添加集团列表</span>
+    <span> {{l("CreateNewGroup")}} </span>
   </h3>
 
   <form nz-form #validateForm="ngForm" (ngSubmit)="save()">
-    <!--企业名称-->
+
+    <!-- 车间名称 -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>集团名称</nz-form-label>
-      <nz-form-control [nzSpan]="12">
-        <input nz-input name="name" formControlName="集团名称" placeholder="请输入集团名称">
+      <nz-form-control nzHasFeedback>
+        <input nz-input name="name"
+               #name="ngModel"
+               [(ngModel)]="group.groupName"
+               [placeholder]="l('groupName')" required>
+        <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+          <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
-    <!--描述-->
+
+
+    <!-- 车间介绍 -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>集团名称</nz-form-label>
-      <nz-form-control [nzSpan]="12">
-        <input nz-input name="name" formControlName="集团名称" placeholder="请输入集团名称">
+      <nz-form-control>
+        <input nz-input name="description" [(ngModel)]="group.groupDescription" [placeholder]="l('GroupDescription')">
       </nz-form-control>
     </nz-form-item>
-    <!--备注-->
-    <!--<nz-form-item>-->
-      <!--<nz-form-control nzHasFeedback>-->
-        <!--<input nz-input name="name"-->
-               <!--#name="ngModel"-->
-               <!--[(ngModel)]="role.name"-->
-               <!--[placeholder]="l('Name')" required>-->
-        <!--<nz-form-explain *ngIf="name.control.dirty&&name.control.errors">-->
-          <!--<ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>-->
-        <!--</nz-form-explain>-->
-      <!--</nz-form-control>-->
-    <!--</nz-form-item>-->
+
+    <!-- 权限组 -->
+    <nz-form-item>
+      <nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>
+    </nz-form-item>
+
+    <!-- 功能按钮 -->
+    <div class="custom-modal-footer">
+      <div class="custom-modal-footter-group">
+        <button nz-button type="button" [disabled]="saving" (click)="close()">
+          {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+          {{l("Save")}}
+        </button>
+      </div>
+    </div>
 
   </form>
-
 </div>

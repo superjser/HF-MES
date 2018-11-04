@@ -11,6 +11,7 @@ import {
   PagedResultDtoOfGroupDto,
 } from "@shared/service-proxies/service-proxies";
 import { CreateGroupComponent} from "@app/groups/create-group/create-group.component";
+import { EditGroupComponent } from "@app/groups/edit-group/edit-group.component";
 
 @Component({
   selector: 'app-groups',
@@ -20,17 +21,16 @@ import { CreateGroupComponent} from "@app/groups/create-group/create-group.compo
 // export class GroupsComponent implements OnInit {
 export class GroupsComponent extends PagedListingComponentBase<GroupDto> {
 
-  constructor(injector: Injector, private groupsService: GroupServiceProxy) {
+  constructor(injector: Injector, private factoriesService: GroupServiceProxy) {
     super(injector);
   }
 
-  // 获取数据列表
   protected fetchDataList(
     request: PagedRequestDto,
     pageNumber: number,
     finishedCallback: Function,
   ): void {
-    this.groupsService
+    this.factoriesService
       .getAll(request.skipCount, request.maxResultCount)
       .finally(() => {
         finishedCallback();
@@ -40,18 +40,27 @@ export class GroupsComponent extends PagedListingComponentBase<GroupDto> {
         this.totalItems = result.totalCount;
       });
   }
-
-
-  ngOnInit() {
+  protected delete(entity: GroupDto): void {
+    abp.message.confirm(
+      '从集团列表移除 \'' + entity.groupName + '\'?',
+      '永久删除此集团？',
+      (result: boolean) => {
+        if (result) {
+          this.factoriesService
+            .delete(entity.id)
+            .finally(() => {
+              abp.notify.info('删除集团: ' + entity.groupName);
+              this.refresh();
+            })
+            .subscribe(() => { });
+        }
+      },
+    );
   }
 
-  refresh():void{
-    alert("刷新了！")
-  }
-
-  create():void{
+  create(): void {
     this.modalHelper
-      .open(CreateGroupComponent,{},'md',{
+      .open(CreateGroupComponent, {}, 'md', {
         nzMask: true,
       })
       .subscribe(isSave => {
@@ -59,29 +68,17 @@ export class GroupsComponent extends PagedListingComponentBase<GroupDto> {
           this.refresh();
         }
       });
-    //alert("我创建了一条内容！")
-  };
+  }
 
-  groups = [
-    {
-      name: '赫峰集团',
-      description: '山东赫峰集团',
-      time: 'Wed Sep 19 2018 16:24:31 GMT+0800',
-      remarks: '你甚至可以在这里写一些备注',
-    },
-    {
-      name: '赫峰集团',
-      description: '山东赫峰集团',
-      time: 'Wed Sep 19 2018 16:24:31 GMT+0800',
-      remarks: '你甚至可以在这里写一些备注',
-    },
-    {
-      name: '赫峰集团',
-      description: '山东赫峰集团',
-      time: 'Wed Sep 19 2018 16:24:31 GMT+0800',
-      remarks: '你甚至可以在这里写一些备注',
-    }
-  ]
-
-
+  edit(item: GroupDto): void {
+    this.modalHelper
+      .open(EditGroupComponent, { id: item.id }, 'md', {
+        nzMask: true,
+      })
+      .subscribe(isSave => {
+        if (isSave) {
+          this.refresh();
+        }
+      });
+  }
 }

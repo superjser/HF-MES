@@ -20,7 +20,7 @@ export class EnterprisesComponent extends PagedListingComponentBase<EnterpriseDt
     super(injector);
   }
 
-  public enterpriseTitle:string = "企业"
+  // public enterpriseTitle:string = "企业"
 
   protected fetchDataList(
     request: PagedRequestDto,
@@ -39,14 +39,14 @@ export class EnterprisesComponent extends PagedListingComponentBase<EnterpriseDt
   }
   protected delete(entity: EnterpriseDto): void {
     abp.message.confirm(
-      '确定删除此项内容？',
-      '永久删除',
+      '从企业列表移除 \'' + entity.enterpriseName + '\'?',
+      '永久删除此企业？',
       (result: boolean) => {
         if (result) {
           this.enterprisesService
             .delete(entity.id)
             .finally(() => {
-              abp.notify.info('啊啊啊啊啊 ');
+              abp.notify.info('删除企业: ' + entity.enterpriseName);
               this.refresh();
             })
             .subscribe(() => { });
@@ -54,14 +54,6 @@ export class EnterprisesComponent extends PagedListingComponentBase<EnterpriseDt
       },
     );
   }
-
-  enterprises = [
-    {
-      EnterpriseName: "山东慧峰新型材料有限公司",
-      EnterpriseDescription: "石英石",
-      CreationTime: "时间好像是自动获取的"
-    }
-  ]
 
   create(): void {
     this.modalHelper
@@ -75,9 +67,9 @@ export class EnterprisesComponent extends PagedListingComponentBase<EnterpriseDt
       });
   }
 
-  edit(item: EnterpriseDto): void {
+  edit(): void {
     this.modalHelper
-      .open(EditEnterpriseComponent, { id: item.id }, 'md', {
+      .open(EditEnterpriseComponent, { id: 1 }, 'md', {
         nzMask: true,
       })
       .subscribe(isSave => {

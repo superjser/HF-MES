@@ -1,45 +1,35 @@
 <div class="padding-bottom-45">
 
   <h3>
-    <span>创建新企业</span>
+    <span> {{l("CreateNewEnterprise")}} </span>
   </h3>
 
   <form nz-form #validateForm="ngForm" (ngSubmit)="save()">
 
-    <!-- 角色介绍 -->
+    <!-- 企业名称 -->
     <nz-form-item>
-      <nz-form-control>
-        <!--<input nz-input name="description">-->
-        <nz-input-group>
-          <input type="text" nz-input name = "description" placeholder="企业描述">
-        </nz-input-group>
+      <nz-form-control nzHasFeedback>
+        <input nz-input name="name"
+               #name="ngModel"
+               [(ngModel)]="enterprise.enterpriseName"
+               [placeholder]="l('enterpriseName')" required>
+        <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+          <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+        </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
 
-    <!-- 角色介绍 -->
+    <!-- 企业介绍 -->
     <nz-form-item>
       <nz-form-control>
-        <!--<input nz-input name="description">-->
-        <nz-input-group>
-          <input type="text" nz-input name = "description2" placeholder="企业描述">
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-
-    <!-- 角色介绍 -->
-    <nz-form-item>
-      <nz-form-control>
-        <!--<input nz-input name="description">-->
-        <nz-input-group>
-          <input type="text" nz-input name = "description3" placeholder="企业描述">
-        </nz-input-group>
+        <input nz-input name="description" [(ngModel)]="enterprise.enterpriseDescription" [placeholder]="l('EnterpriseDescription')">
       </nz-form-control>
     </nz-form-item>
 
     <!-- 权限组 -->
-    <!--<nz-form-item>-->
-      <!--<nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>-->
-    <!--</nz-form-item>-->
+    <nz-form-item>
+      <nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>
+    </nz-form-item>
 
     <!-- 功能按钮 -->
     <div class="custom-modal-footer">
