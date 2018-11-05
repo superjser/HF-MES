@@ -67,9 +67,9 @@ export class EnterprisesComponent extends PagedListingComponentBase<EnterpriseDt
       });
   }
 
-  edit(): void {
+  edit(item: EnterpriseDto): void {
     this.modalHelper
-      .open(EditEnterpriseComponent, { id: 1 }, 'md', {
+      .open(EditEnterpriseComponent, { id:item.id }, 'md', {
         nzMask: true,
       })
       .subscribe(isSave => {

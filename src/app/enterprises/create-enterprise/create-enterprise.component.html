@@ -8,7 +8,8 @@
 
     <!-- 企业名称 -->
     <nz-form-item>
-      <nz-form-control nzHasFeedback>
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('enterpriseName')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback>
         <input nz-input name="name"
                #name="ngModel"
                [(ngModel)]="enterprise.enterpriseName"
@@ -21,8 +22,9 @@
 
     <!-- 企业介绍 -->
     <nz-form-item>
-      <nz-form-control>
-        <input nz-input name="description" [(ngModel)]="enterprise.enterpriseDescription" [placeholder]="l('EnterpriseDescription')">
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('enterpriseDescription')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <textarea rows="3" nz-input name="description" [(ngModel)]="enterprise.enterpriseDescription" [placeholder]="l('EnterpriseDescription')"></textarea>
       </nz-form-control>
     </nz-form-item>
 

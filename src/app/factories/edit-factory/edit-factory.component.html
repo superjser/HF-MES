@@ -10,19 +10,21 @@
 
       <!-- 车间名称 -->
       <nz-form-item>
-        <nz-form-control nzHasFeedback>
+        <nz-form-label [nzSpan]="7"  nzRequired>{{l('factoryName')}}</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback>
           <input nz-input name="name" #name="ngModel" [(ngModel)]="factory.factoryName" [placeholder]="l('factoryName')"
                  required>
-          <!--<nz-form-explain *ngIf="name.control.dirty&&name.control.errors">-->
-            <!--<ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>-->
-          <!--</nz-form-explain>-->
+          <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+            <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+          </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
 
       <!-- 车间介绍 -->
       <nz-form-item>
-        <nz-form-control>
-          <input nz-input name="description" [(ngModel)]="factory.factoryDescription" [placeholder]="l('factoryDescription')">
+        <nz-form-label [nzSpan]="7"  nzRequired>{{l('factoryDescription')}}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <textarea rows="3" nz-input name="description" [(ngModel)]="factory.factoryDescription" [placeholder]="l('factoryDescription')"></textarea>
         </nz-form-control>
       </nz-form-item>
 

@@ -25,28 +25,18 @@ export class EditEnterpriseComponent extends ModalComponentBase implements OnIni
   }
 
   ngOnInit() {
-    // this._enterpriseService.getAllPermissions()
-    //   .subscribe((permissions: ListResultDtoOfPermissionDto) => {
-    //     this.permissions = permissions;
-    //
-    //     this.fetchData();
-    //   });
+    this.fetchData();
   }
-  //
-  // fetchData(): void {
-  //   this._enterpriseService.get(this.id)
-  //     .finally(() => {
-  //
-  //     })
-  //     .subscribe((result: EnterpriseDto) => {
-  //       this.enterprise = result;
-  //       this.permissions.items.forEach((item) => {
-  //         this.permissionList.push({
-  //           // label: item.displayName, value: item.name, checked: this.checkPermission(item.name), disabled: this.enterprise.isStatic
-  //         });
-  //       });
-  //     });
-  // }
+
+  fetchData(): void {
+    this._enterpriseService.get(this.id)
+      .finally(() => {
+
+      })
+      .subscribe((result: EnterpriseDto) => {
+        this.enterprise = result;
+      });
+  }
 
 
   // checkPermission(permissionName: string): boolean {
@@ -55,20 +45,10 @@ export class EditEnterpriseComponent extends ModalComponentBase implements OnIni
 
   save(): void {
     this.saving = true;
-    let tmpPermissions = [];
-
-    this.permissionList.forEach((item) => {
-      if (item.checked) {
-        tmpPermissions.push(item.value);
-      }
-    });
-
-    // this.enterprise.permissions = tmpPermissions;
-
     this._enterpriseService.update(this.enterprise)
-      // .finally(() => {
-      //   this.saving = false;
-      // })
+      .finally(() => {
+        this.saving = false;
+      })
       .subscribe(() => {
         this.notify.info(this.l('SavedSuccessfully'));
         this.success();

@@ -8,7 +8,8 @@
 
     <!-- 车间名称 -->
     <nz-form-item>
-      <nz-form-control nzHasFeedback>
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('factoryName')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback>
         <input nz-input name="name"
                #name="ngModel"
                [(ngModel)]="factory.factoryName"
@@ -22,8 +23,9 @@
 
     <!-- 车间介绍 -->
     <nz-form-item>
-      <nz-form-control>
-        <input nz-input name="description" [(ngModel)]="factory.factoryDescription" [placeholder]="l('FactoryDescription')">
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('factoryName')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <textarea rows="3" nz-input name="description" [(ngModel)]="factory.factoryDescription" [placeholder]="l('FactoryDescription')"></textarea>
       </nz-form-control>
     </nz-form-item>
 

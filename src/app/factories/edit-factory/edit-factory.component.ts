@@ -29,19 +29,21 @@ export class EditFactoryComponent extends ModalComponentBase implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData(): void {
+    this._factoryService.get(this.id)
+      .finally(() => {
+
+      })
+      .subscribe((result: FactoryDto) => {
+        this.factory = result;
+      });
   }
 
   save(): void {
     this.saving = true;
-    let tmpPermissions = [];
-
-    this.permissionList.forEach((item) => {
-      if (item.checked) {
-        tmpPermissions.push(item.value);
-      }
-    });
-
-
     this._factoryService.update(this.factory)
       .finally(() => {
         this.saving = false;
