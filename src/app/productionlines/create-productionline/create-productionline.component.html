@@ -1,31 +1,38 @@
 <div class="padding-bottom-45">
 
   <h3>
-    <span> 新建车间 </span>
+    <span> 新建产线 </span>
   </h3>
 
   <form nz-form #validateForm="ngForm" (ngSubmit)="save()">
 
-    <!-- 车间名称 -->
+    <!-- 产线名称 -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="8" nzRequired>{{l('factoryName')}}</nz-form-label>
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('productionLineName')}}</nz-form-label>
       <nz-form-control [nzSpan]="14" nzHasFeedback>
         <input nz-input name="name"
                #name="ngModel"
-               [(ngModel)]="factory.factoryName"
-               [placeholder]="l('factoryName')" required>
+               [(ngModel)]="productionline.productionLineName"
+               [placeholder]="l('productionLineName')" required>
         <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
           <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
 
-
-    <!-- 车间介绍 -->
+    <!--产线代码-->
     <nz-form-item>
-      <nz-form-label [nzSpan]="8" nzRequired>{{l('factoryName')}}</nz-form-label>
-      <nz-form-control [nzSpan]="14">
-        <textarea rows="3" nz-input name="description" [(ngModel)]="factory.factoryDescription" [placeholder]="l('FactoryDescription')"></textarea>
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('productionLineCode')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback>
+        <input nz-input name="code" [(ngModel)]="productionline.productionLineCode" [placeholder]="l('productionLineCode')" required>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- 产线介绍 -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>{{l('productionLineDescription')}}</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback>
+        <textarea rows="3" nz-input name="description" [(ngModel)]="productionline.productionLineDescription" [placeholder]="l('productionLineDescription')"></textarea>
       </nz-form-control>
     </nz-form-item>
 

@@ -12,6 +12,7 @@ import { UsersComponent } from '@app/users/users.component';
 import { GroupsComponent } from "@app/groups/groups.component";
 import { EnterprisesComponent } from "@app/enterprises/enterprises.component"
 import { FactoriesComponent } from "@app/factories/factories.component";
+import { ProductionlinesComponent } from "@app/productionlines/productionlines.component";
 
 const routes: Routes = [
   {
@@ -60,6 +61,11 @@ const routes: Routes = [
         path: 'factories',
         component: FactoriesComponent,
         canActivate: [AppRouteGuard],
+      },
+      {
+        path: 'productionlines',
+        component: ProductionlinesComponent,
+        canActivate: [AppRouteGuard]
       },
       {
         path: '**',

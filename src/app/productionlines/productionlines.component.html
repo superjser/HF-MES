@@ -16,24 +16,26 @@
   <nz-table #ajaxTable nzShowSizeChanger [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize"
             [nzLoading]="isTableLoading" (nzPageIndexChange)="refresh()" (nzPageSizeChange)="refresh()" [nzFrontPagination]="false">
     <thead>
-    <tr>
-      <th>{{l('FactoryName')}}</th>
-      <th>{{l('FactoryDescription')}}</th>
-      <th>{{l('CreationTime')}}</th>
-      <th>{{l('Actions')}}</th>
-    </tr>
+      <tr>
+        <th>{{l('productionLineName')}}</th>
+        <th>{{l('productionLineCode')}}</th>
+        <th>{{l('productionLineDescription')}}</th>
+        <th>{{l('CreationTime')}}</th>
+        <th>{{l('Actions')}}</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of ajaxTable.data">
-      <td>{{item.factoryName}}</td>
-      <td>{{item.factoryDescription}}</td>
-      <td>{{item.creationTime}}</td>
-      <td>
-        <a (click)="edit(item)">编辑</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a (click)="delete(item)">删除</a>
-      </td>
-    </tr>
+      <tr *ngFor="let item of ajaxTable.data">
+        <td>{{item.productionLineName}}</td>
+        <td>{{item.productionLineCode}}</td>
+        <td>{{item.productionLineDescription}}</td>
+        <td>{{item.creationTime}}</td>
+        <td>
+          <a (click)="edit(item)">编辑</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(item)">删除</a>
+        </td>
+      </tr>
     </tbody>
   </nz-table>
 

@@ -1,0 +1,59 @@
+<div>
+
+  <h3>
+    <span> 编辑 </span>
+  </h3>
+
+  <nz-spin [nzSpinning]="!productionline">
+    <form nz-form #validateForm="ngForm" (ngSubmit)="save()" *ngIf="productionline">
+
+      <!-- 产线名称 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="8"  nzRequired>{{l('productionLineName')}}</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <input nz-input name="name" #name="ngModel" [(ngModel)]="productionline.productionLineName" [placeholder]="l('productionLineName')"
+                 required>
+          <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+            <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+
+      <!--产线代码-->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="8" nzRequired>{{l('productionLineCode')}}</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <input nz-input name="code" [(ngModel)]="productionline.productionLineCode" [placeholder]="l('productionLineCode')" required>
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <!-- 产线介绍 -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="8" nzRequired>{{l('productionLineDescription')}}</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <textarea rows="3" nz-input name="description" [(ngModel)]="productionline.productionLineDescription" [placeholder]="l('productionLineDescription')"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- 权限以后可能用到 -->
+      <!--<nz-form-item>-->
+      <!--<nz-checkbox-group name="permissions" [(ngModel)]="permissionList" *ngIf="permissionList.length!=0"></nz-checkbox-group>-->
+      <!--</nz-form-item>-->
+
+      <!-- 按钮 -->
+      <div class="custom-modal-footer">
+        <div class="custom-modal-footter-group">
+          <button nz-button type="button" [disabled]="saving" (click)="close()">
+            {{l("Cancel")}}
+          </button>
+          <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.valid||saving">
+            {{l("Save")}}
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </nz-spin>
+
+</div>
