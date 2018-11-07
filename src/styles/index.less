@@ -10,7 +10,7 @@
 
 // 左侧菜单栏的顶部距离
 .aside {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 @media (min-width: @screen-md-min) {
@@ -24,17 +24,17 @@
         .content {
             margin-left: (@aside-collapsed-wd + @content-padding);
         } // 顶部工具栏的宽度
-        .head_content>.header {
+        .head_content >.header {
             margin-left: (@aside-collapsed-wd);
         }
     } // 顶部工具栏的宽度
-    .head_content>.header {
+    .head_content >.header {
         margin-left: (@aside-wd);
     }
 }
 
 .custom-modal-footer {
-    border-top: 1px solid #e8e8e8;
+    //border-top: 1px solid #e8e8e8;
     width: 100%;
     margin-top: 10px;
     .custom-modal-footter-group {
